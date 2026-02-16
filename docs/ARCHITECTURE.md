@@ -13,8 +13,6 @@ Custom WordPress theme built entirely without third-party plugins. Every feature
 
 ## System Architecture Diagram
 
-
-
 ## Database Schema
 
 ### Custom Post Type: product_offers
@@ -39,3 +37,4 @@ Each product offer stores the following meta fields:
 - **Role-Based Filtering:** Content is filtered at the query level based on user capabilities.
 - **AJAX for Front-End Actions:** All form submissions use AJAX to maintain a seamless experience.
 - **No Reliance on Plugins:** All functionality is custom-coded, reducing dependencies and improving performance.
+- 
