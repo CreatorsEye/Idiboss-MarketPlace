@@ -30,33 +30,27 @@ Investors, Suppliers, and Marketers can create and manage their own posts direct
 - Budget (optional)
 
 ## AJAX-Based Submission
-To ensure a smooth user experience without page reloads, all form submissions are handled via AJAX.
+To ensure a smooth user experience without page reloads, all form submissions are handled via AJAX. The process involves:
 
-### JavaScript Example
-```javascript
-jQuery('#post-submission-form').on('submit', function(e) {
-    e.preventDefault();
-    var formData = new FormData(this);
-    formData.append('action', 'handle_frontend_post_submission');
-    formData.append('nonce', frontendAjax.nonce);
-    
-    jQuery.ajax({
-        url: frontendAjax.ajaxurl,
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-            if (response.success) {
-                // Show success message
-                jQuery('#form-message').html('<div class="success">Post created!</div>');
-                // Optionally reset form or update list
-            } else {
-                jQuery('#form-message').html('<div class="error">' + response.data + '</div>');
-            }
-        },
-        error: function() {
-            jQuery('#form-message').html('<div class="error">An error occurred.</div>');
-        }
-    });
-});
+- The form is submitted via JavaScript, which sends data to a WordPress AJAX handler.
+- The handler verifies the user's capabilities and nonce.
+- The post is created using WordPress functions.
+- Meta fields and images are saved.
+- A JSON response (success or error) is returned and displayed to the user.
+
+## Real-Time Feedback
+- **Success/Error Notifications:** Displayed in a message area.
+- **Progress Indicators:** Show while uploading/submitting.
+- **Post Preview:** Optionally show a preview of the created post.
+
+## Validation and Security
+- Nonce verification on all AJAX requests.
+- Capability checks before allowing submission.
+- Sanitization of all input fields.
+- Validation of file types and sizes for image uploads.
+
+## User Experience Considerations
+- Forms are styled consistently with the theme (green/white).
+- Clear labels and placeholders.
+- Inline validation for required fields.
+- Responsive design for mobile use.
