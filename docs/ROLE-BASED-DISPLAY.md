@@ -49,4 +49,3 @@ Roles are visually distinguished by color badges next to the user name:
 - **Investor:** Orange
 - **Marketer:** Purple
 - **Seller:** Gray
-- 
